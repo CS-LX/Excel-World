@@ -12,5 +12,15 @@ namespace Excel_World
         {
 
         }
+
+        private void startGameButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            GameManager.Start();
+        }
+
+        private void finishGameButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            GameManager.Finish();
+        }
     }
 }

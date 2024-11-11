@@ -32,6 +32,7 @@
     <BootstrapperEnabled>true</BootstrapperEnabled>
     <BootstrapperComponentsLocation>HomeSite</BootstrapperComponentsLocation>
     <ResolveComReferenceSilent>true</ResolveComReferenceSilent>
+    <LangVersion>11</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.VSTORuntime.4.0">
@@ -185,6 +186,12 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Game\Component.cs" />
+    <Compile Include="Game\Entity.cs" />
+    <Compile Include="Game\GameManager.cs" />
+    <Compile Include="Game\IUpdateable.cs" />
+    <Compile Include="Game\Project.cs" />
+    <Compile Include="Game\Subsystem.cs" />
     <Compile Include="OperationsBar.cs">
       <SubType>Component</SubType>
     </Compile>

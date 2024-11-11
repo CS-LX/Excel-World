@@ -36,7 +36,8 @@
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
-            this.button1 = this.Factory.CreateRibbonButton();
+            this.startGameButton = this.Factory.CreateRibbonButton();
+            this.finishGameButton = this.Factory.CreateRibbonButton();
             this.tab1.SuspendLayout();
             this.group1.SuspendLayout();
             this.SuspendLayout();
@@ -50,14 +51,25 @@
             // 
             // group1
             // 
-            this.group1.Items.Add(this.button1);
-            this.group1.Label = "group1";
+            this.group1.Items.Add(this.startGameButton);
+            this.group1.Items.Add(this.finishGameButton);
             this.group1.Name = "group1";
             // 
-            // button1
+            // startGameButton
             // 
-            this.button1.Label = "button1";
-            this.button1.Name = "button1";
+            this.startGameButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.startGameButton.Label = "开始游戏";
+            this.startGameButton.Name = "startGameButton";
+            this.startGameButton.ShowImage = true;
+            this.startGameButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.startGameButton_Click);
+            // 
+            // finishGameButton
+            // 
+            this.finishGameButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.finishGameButton.Label = "结束游戏";
+            this.finishGameButton.Name = "finishGameButton";
+            this.finishGameButton.ShowImage = true;
+            this.finishGameButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.finishGameButton_Click);
             // 
             // OperationsBar
             // 
@@ -77,7 +89,8 @@
 
         internal Microsoft.Office.Tools.Ribbon.RibbonTab tab1;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup group1;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton button1;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton startGameButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton finishGameButton;
     }
 
     partial class ThisRibbonCollection
