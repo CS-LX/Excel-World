@@ -11,5 +11,7 @@ namespace Excel_World.Game
         void Update(float dt);
 
         void FixedUpdate(float dt);
+
+        int UpdateOrder {  get; }
     }
 }

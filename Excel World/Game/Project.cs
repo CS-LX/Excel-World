@@ -10,6 +10,8 @@ namespace Excel_World.Game
     {
         private List<Subsystem> m_subsystems = new();
 
+        private List<IUpdateable> m_updateableSubsystems = new();
+
         private List<Entity> m_entities = new();
 
         public void AddEntity(Entity entity)
@@ -28,12 +30,26 @@ namespace Excel_World.Game
         {
             subsystem.Project = this;
             m_subsystems.Add(subsystem);
+
+            m_updateableSubsystems.Clear();
+            foreach (Subsystem subsystem1 in m_subsystems)
+            {
+                if (subsystem1 is IUpdateable updateable) m_updateableSubsystems.Add(updateable);
+            }
+            m_updateableSubsystems.Sort(SubsystemComparer.Instance);
         }
 
         public void RemoveSubsystem(Subsystem subsystem)
         {
             subsystem.Project = null;
             m_subsystems.Remove(subsystem);
+
+            m_updateableSubsystems.Clear();
+            foreach (Subsystem subsystem1 in m_subsystems)
+            {
+                if (subsystem1 is IUpdateable updateable) m_updateableSubsystems.Add(updateable);
+            }
+            m_updateableSubsystems.Sort(SubsystemComparer.Instance);
         }
 
         public void Update(float dt)
@@ -94,6 +110,22 @@ namespace Excel_World.Game
                 throw new KeyNotFoundException($"Subsystem of type {typeof(T).Name} not found.");
             }
             return subsystem as T;
+        }
+    }
+
+
+    public class SubsystemComparer : IComparer<IUpdateable>
+    {
+        public static SubsystemComparer Instance = new();
+
+        public int Compare(IUpdateable u1, IUpdateable u2)
+        {
+            int num = u1.UpdateOrder - u2.UpdateOrder;
+            if (num != 0)
+            {
+                return num;
+            }
+            return u1.GetHashCode() - u2.GetHashCode();
         }
     }
 }
