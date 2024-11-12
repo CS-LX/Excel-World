@@ -12,6 +12,8 @@ namespace Excel_World.Game
 
         private List<IUpdateable> m_updateableSubsystems = new();
 
+        private List<IDrawable> m_drawableSubsystems = new();
+
         private List<Entity> m_entities = new();
 
         public void AddEntity(Entity entity)
@@ -36,7 +38,14 @@ namespace Excel_World.Game
             {
                 if (subsystem1 is IUpdateable updateable) m_updateableSubsystems.Add(updateable);
             }
-            m_updateableSubsystems.Sort(SubsystemComparer.Instance);
+            m_updateableSubsystems.Sort(UpdateableComparer.Instance);
+
+            m_drawableSubsystems.Clear();
+            foreach (Subsystem subsystem1 in m_subsystems)
+            {
+                if (subsystem1 is IDrawable drawable) m_drawableSubsystems.Add(drawable);
+            }
+            m_drawableSubsystems.Sort(DrawableComparer.Instance);
         }
 
         public void RemoveSubsystem(Subsystem subsystem)
@@ -49,7 +58,14 @@ namespace Excel_World.Game
             {
                 if (subsystem1 is IUpdateable updateable) m_updateableSubsystems.Add(updateable);
             }
-            m_updateableSubsystems.Sort(SubsystemComparer.Instance);
+            m_updateableSubsystems.Sort(UpdateableComparer.Instance);
+
+            m_drawableSubsystems.Clear();
+            foreach (Subsystem subsystem1 in m_subsystems)
+            {
+                if (subsystem1 is IDrawable drawable) m_drawableSubsystems.Add(drawable);
+            }
+            m_drawableSubsystems.Sort(DrawableComparer.Instance);
         }
 
         public void Update(float dt)
@@ -82,23 +98,25 @@ namespace Excel_World.Game
 
         public void UpdateSubsystems(float dt)
         {
-            foreach(Subsystem subsystem in m_subsystems)
+            foreach (IUpdateable updateable in m_updateableSubsystems)
             {
-                if (subsystem is IUpdateable updateable)
-                {
-                    updateable.Update(dt);
-                }
+                updateable.Update(dt);
             }
         }
 
         public void FixedUpdateSubsystems(float dt)
         {
-            foreach (Subsystem subsystem in m_subsystems)
+            foreach (IUpdateable updateable in m_updateableSubsystems)
             {
-                if (subsystem is IUpdateable updateable)
-                {
-                    updateable.FixedUpdate(dt);
-                }
+                updateable.FixedUpdate(dt);
+            }
+        }
+
+        public void DrawSubsystems(Dictionary<Point2, string> requires)
+        {
+            foreach (IDrawable drawable in m_drawableSubsystems)
+            {
+                drawable.Draw(requires);
             }
         }
 
@@ -114,13 +132,28 @@ namespace Excel_World.Game
     }
 
 
-    public class SubsystemComparer : IComparer<IUpdateable>
+    public class UpdateableComparer : IComparer<IUpdateable>
     {
-        public static SubsystemComparer Instance = new();
+        public static UpdateableComparer Instance = new();
 
         public int Compare(IUpdateable u1, IUpdateable u2)
         {
             int num = u1.UpdateOrder - u2.UpdateOrder;
+            if (num != 0)
+            {
+                return num;
+            }
+            return u1.GetHashCode() - u2.GetHashCode();
+        }
+    }
+
+    public class DrawableComparer : IComparer<IDrawable>
+    {
+        public static DrawableComparer Instance = new();
+
+        public int Compare(IDrawable u1, IDrawable u2)
+        {
+            int num = u1.DrawOrder - u2.DrawOrder;
             if (num != 0)
             {
                 return num;
