@@ -9,5 +9,15 @@ namespace Excel_World.Game
     public abstract class Subsystem
     {
         public Project Project { get; set; }
+
+        public virtual void Load()
+        {
+
+        }
+
+        public virtual void Save() 
+        {
+
+        }
     }
 }

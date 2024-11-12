@@ -129,6 +129,16 @@ namespace Excel_World.Game
             }
             return subsystem as T;
         }
+
+        public void Load()
+        {
+            m_subsystems.ForEach(x => x.Load());
+        }
+
+        public void Save()
+        {
+            m_subsystems.ForEach(x => x.Save());
+        }
     }
 
 

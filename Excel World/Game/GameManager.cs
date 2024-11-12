@@ -3,17 +3,22 @@ using System.Threading;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Collections.Generic;
+using Microsoft.Office.Interop.Excel;
 
 namespace Excel_World.Game;
 public static class GameManager
 {
     private static Stopwatch stopwatch; // 用于记录帧时间
     private static bool isRunning = false; // 控制更新循环是否运行
+    public static Worksheet Screen;
 
     public static double DeltaTime { get; private set; } // 每帧的时间间隔
     public static double FixedDeltaTime { get; private set; } = 1.0 / 30.0; // 固定更新间隔，30次/秒
 
     public static Project Project;
+
+    public const int WorldWidth = 20;
+    public const int WorldHeight = 20;
     static GameManager()
     {
         stopwatch = new Stopwatch();
@@ -23,6 +28,8 @@ public static class GameManager
     public static void Start()
     {
         if (isRunning) return;
+
+        Project.Load();
 
         isRunning = true;
         stopwatch.Start();
@@ -38,6 +45,8 @@ public static class GameManager
 
         isRunning = false;
         stopwatch.Stop();
+
+        Project.Save();
 
         Debug.WriteLine("GameManager has finished.");
     }

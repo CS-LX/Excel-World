@@ -6,6 +6,8 @@ using System.Xml.Linq;
 using Excel = Microsoft.Office.Interop.Excel;
 using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Excel;
+using Excel_World.Game;
+using Excel_World.Game.Subsystems;
 
 namespace Excel_World
 {
@@ -13,6 +15,8 @@ namespace Excel_World
     {
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            GameManager.Screen = Globals.ThisAddIn.Application.ActiveSheet as Excel.Worksheet;
+            GameManager.Project.AddSubsystem(new SubsystemDrawing());
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
