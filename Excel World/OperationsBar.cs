@@ -23,5 +23,25 @@ namespace Excel_World
         {
             GameManager.Finish();
         }
+
+        private void wButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            GameManager.Project.FindEntity("Player").GetComponent<ComponentLocomotion>().Move(new Point2(0, 1));
+        }
+
+        private void aButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            GameManager.Project.FindEntity("Player").GetComponent<ComponentLocomotion>().Move(new Point2(-1, 0));
+        }
+
+        private void dButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            GameManager.Project.FindEntity("Player").GetComponent<ComponentLocomotion>().Move(new Point2(1, 0));
+        }
+
+        private void sButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            GameManager.Project.FindEntity("Player").GetComponent<ComponentLocomotion>().Move(new Point2(0, -1));
+        }
     }
 }

@@ -9,5 +9,6 @@ namespace Excel_World.Game
     public abstract class Component
     {
         public Project Project { get; set; }
+        public Entity Entity { get; set; }
     }
 }

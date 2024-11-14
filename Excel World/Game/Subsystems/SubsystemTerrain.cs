@@ -33,13 +33,13 @@ namespace Excel_World.Game.Subsystems
 
         public void Draw(Dictionary<Point2, string> requires)
         {
-            //for (int i = 0; i < m_blocks.GetLength(0); i++)
-            //{
-            //    for (int j = 0; j < m_blocks.GetLength(1); j++)
-            //    {
-            //        requires[new Point2(i, j)] = BlocksManager.Blocks[m_blocks[i, j]].GetChar();
-            //    }
-            //}
+            for (int i = 0; i < m_blocks.GetLength(0); i++)
+            {
+                for (int j = 0; j < m_blocks.GetLength(1); j++)
+                {
+                    requires[new Point2(i, j)] = BlocksManager.Blocks[m_blocks[i, j]].GetChar();
+                }
+            }
         }
     }
 }

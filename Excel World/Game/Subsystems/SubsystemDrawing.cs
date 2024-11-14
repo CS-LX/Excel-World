@@ -1,19 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Excel_World.Game.Subsystems
 {
-    public class SubsystemDrawing : Subsystem, IUpdateable, IDrawable
+    public class SubsystemDrawing : Subsystem
     {
-        public int UpdateOrder => int.MaxValue;
-
-        public int DrawOrder => int.MaxValue;
-
         public Dictionary<Point2, string> m_requires = new();
+
+        public bool m_isRunning = false;
 
         public override void Load()
         {
@@ -30,15 +30,29 @@ namespace Excel_World.Game.Subsystems
             {
                 worksheet.Columns[col].ColumnWidth = 16 / 7.5;  // 列宽单位和行高不同，约为 1字符 = 7.5 点
             }
+
+            m_isRunning = true;
+
+            Task.Run(DrawLoop);
         }
 
-        public void FixedUpdate(float dt)
+        public override void Save()
         {
+            m_requires.Clear();
+            m_isRunning = false;
         }
 
-        public void Update(float dt)
+        private void DrawLoop()
         {
-            Project.DrawSubsystems(m_requires);
+            while (m_isRunning)
+            {
+                Project.DrawSubsystems(m_requires);
+                Project.DrawEntities(m_requires);
+
+                Draw(m_requires);
+                // 控制帧率（例如60帧/秒）
+                Thread.Sleep(16);
+            }
         }
 
         public void Draw(Dictionary<Point2, string> requires)

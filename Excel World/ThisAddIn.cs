@@ -20,6 +20,12 @@ namespace Excel_World
             GameManager.Screen = Globals.ThisAddIn.Application.ActiveSheet as Excel.Worksheet;
             GameManager.Project.AddSubsystem(new SubsystemDrawing());
             GameManager.Project.AddSubsystem(new SubsystemTerrain());
+
+            Entity playerEntity = new Entity() { Name = "Player" };
+            playerEntity.AddComponent(new ComponentBody());
+            playerEntity.AddComponent(new ComponentLocomotion());
+
+            GameManager.Project.AddEntity(playerEntity);
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

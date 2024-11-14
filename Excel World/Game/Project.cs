@@ -96,6 +96,14 @@ namespace Excel_World.Game
             }
         }
 
+        public void DrawEntities(Dictionary<Point2, string> requires)
+        {
+            foreach (Entity entity in m_entities)
+            {
+                entity.DrawComponents(requires);
+            }
+        }
+
         public void UpdateSubsystems(float dt)
         {
             foreach (IUpdateable updateable in m_updateableSubsystems)
@@ -129,6 +137,8 @@ namespace Excel_World.Game
             }
             return subsystem as T;
         }
+
+        public Entity FindEntity(string name) => m_entities.Find(x => x.Name == name);
 
         public void Load()
         {
