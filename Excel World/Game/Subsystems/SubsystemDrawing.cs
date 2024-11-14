@@ -12,6 +12,7 @@ namespace Excel_World.Game.Subsystems
     public class SubsystemDrawing : Subsystem
     {
         public Dictionary<Point2, string> m_requires = new();
+        private Dictionary<Point2, string> m_previousRequires = new();
 
         public bool m_isRunning = false;
 
@@ -61,11 +62,26 @@ namespace Excel_World.Game.Subsystems
             {
                 for (int y = 0; y < GameManager.WorldHeight; y++)
                 {
-                    //GameManager.Screen.Cells[x + 1, y + 1].Value2 = "A";
-                    if (requires.ContainsKey(new Point2(x, y))) GameManager.Screen.Cells[x + 1, y + 1].Value2 = requires[new Point2(x, y)];
-                    else GameManager.Screen.Cells[x + 1, y + 1].Value2 = string.Empty;
+                    Point2 point = new Point2(x, y);
+                    if (requires.ContainsKey(point))
+                    {
+                        if (m_previousRequires.ContainsKey(point) && m_previousRequires[point] != requires[point])
+                        {
+                            GameManager.Screen.Cells[x + 1, y + 1].Value2 = requires[point];
+                        }
+                        if (!m_previousRequires.ContainsKey(point))
+                        {
+                            GameManager.Screen.Cells[x + 1, y + 1].Value2 = requires[point];
+                        }
+                    }
+                    else if (m_previousRequires.ContainsKey(point) && !requires.ContainsKey(point))
+                    {
+                        GameManager.Screen.Cells[x + 1, y + 1].Value2 = string.Empty;
+                    }
                 }
             }
+
+            m_previousRequires = new Dictionary<Point2, string>(requires);
         }
     }
 }
