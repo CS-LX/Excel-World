@@ -186,6 +186,10 @@
     can be found.
   -->
   <ItemGroup>
+    <Compile Include="Game\Blocks\Block.cs" />
+    <Compile Include="Game\Blocks\BlocksManager.cs" />
+    <Compile Include="Game\Blocks\SpecificBlocks\AirBlock.cs" />
+    <Compile Include="Game\Blocks\SpecificBlocks\DirtBlock.cs" />
     <Compile Include="Game\Component.cs" />
     <Compile Include="Game\Entity.cs" />
     <Compile Include="Game\GameManager.cs" />
@@ -195,6 +199,7 @@
     <Compile Include="Game\Project.cs" />
     <Compile Include="Game\Subsystem.cs" />
     <Compile Include="Game\Subsystems\SubsystemDrawing.cs" />
+    <Compile Include="Game\Subsystems\SubsystemTerrain.cs" />
     <Compile Include="OperationsBar.cs">
       <SubType>Component</SubType>
     </Compile>

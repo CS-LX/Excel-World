@@ -47,6 +47,7 @@ namespace Excel_World.Game.Subsystems
             {
                 for (int y = 0; y < GameManager.WorldHeight; y++)
                 {
+                    //GameManager.Screen.Cells[x + 1, y + 1].Value2 = "A";
                     if (requires.ContainsKey(new Point2(x, y))) GameManager.Screen.Cells[x + 1, y + 1].Value2 = requires[new Point2(x, y)];
                     else GameManager.Screen.Cells[x + 1, y + 1].Value2 = string.Empty;
                 }

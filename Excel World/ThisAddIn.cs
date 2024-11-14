@@ -8,6 +8,7 @@ using Office = Microsoft.Office.Core;
 using Microsoft.Office.Tools.Excel;
 using Excel_World.Game;
 using Excel_World.Game.Subsystems;
+using Excel_World.Game.Blocks;
 
 namespace Excel_World
 {
@@ -15,8 +16,10 @@ namespace Excel_World
     {
         private void ThisAddIn_Startup(object sender, System.EventArgs e)
         {
+            BlocksManager.Init();
             GameManager.Screen = Globals.ThisAddIn.Application.ActiveSheet as Excel.Worksheet;
             GameManager.Project.AddSubsystem(new SubsystemDrawing());
+            GameManager.Project.AddSubsystem(new SubsystemTerrain());
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)
