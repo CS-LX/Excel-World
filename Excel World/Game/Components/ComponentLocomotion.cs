@@ -11,7 +11,7 @@ namespace Excel_World.Game
     {
         public Point2 m_direction;
         private float m_cacheSeconds = 0;
-        public float m_speed = 2;
+        public float m_speed = 3;
         public int UpdateOrder => 0;
 
         public ComponentBody m_componentBody;
