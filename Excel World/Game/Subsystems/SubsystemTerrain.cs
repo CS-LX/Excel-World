@@ -25,7 +25,7 @@ namespace Excel_World.Game.Subsystems
             {
                 for (int j = 0; j < m_blocks.GetLength(1); j++)
                 {
-                    m_blocks[i, j] = "🟩";
+                    m_blocks[i, j] = " ";
                 }
             }
         }

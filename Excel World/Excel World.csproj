@@ -198,6 +198,7 @@
     <Compile Include="Game\Project.cs" />
     <Compile Include="Game\Subsystem.cs" />
     <Compile Include="Game\Subsystems\SubsystemDrawing.cs" />
+    <Compile Include="Game\Subsystems\SubsystemEatables.cs" />
     <Compile Include="Game\Subsystems\SubsystemTerrain.cs" />
     <Compile Include="OperationsBar.cs">
       <SubType>Component</SubType>

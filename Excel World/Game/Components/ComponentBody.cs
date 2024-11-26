@@ -36,7 +36,7 @@ namespace Excel_World.Game
         {
             foreach (var part in m_bodyParts)
             {
-                requires[part] = "🧍‍♂️";
+                requires[part] = "\U0001f7e9";
             }
         }
     }
