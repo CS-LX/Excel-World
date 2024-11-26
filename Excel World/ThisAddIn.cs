@@ -25,6 +25,7 @@ namespace Excel_World
 
             playerEntity.AddComponent(new ComponentBody());
             playerEntity.AddComponent(new ComponentLocomotion());
+            playerEntity.AddComponent(new ComponentHealth());
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

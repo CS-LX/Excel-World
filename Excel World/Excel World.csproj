@@ -188,6 +188,7 @@
   <ItemGroup>
     <Compile Include="Game\Component.cs" />
     <Compile Include="Game\Components\ComponentBody.cs" />
+    <Compile Include="Game\Components\ComponentHealth.cs" />
     <Compile Include="Game\Components\ComponentLocomotion.cs" />
     <Compile Include="Game\Entity.cs" />
     <Compile Include="Game\GameManager.cs" />

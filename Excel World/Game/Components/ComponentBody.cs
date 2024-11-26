@@ -16,7 +16,6 @@ namespace Excel_World.Game
         public override void Load()
         {
             m_headPosition = new Point2(10, 10);
-            m_bodyParts.Add(m_headPosition);
         }
 
         public override void Save()
@@ -27,8 +26,8 @@ namespace Excel_World.Game
 
         public void Move(Point2 direciton, bool addLength = false)
         {
-            m_headPosition += direciton;
             m_bodyParts.Add(m_headPosition);
+            m_headPosition += direciton;
             if (!addLength) m_bodyParts.RemoveAt(0);
         }
 
@@ -38,6 +37,7 @@ namespace Excel_World.Game
             {
                 requires[part] = "\U0001f7e9";
             }
+            requires[m_headPosition] = "\U0001f7e9";
         }
     }
 }
