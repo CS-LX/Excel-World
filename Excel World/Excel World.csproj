@@ -186,10 +186,6 @@
     can be found.
   -->
   <ItemGroup>
-    <Compile Include="Game\Blocks\Block.cs" />
-    <Compile Include="Game\Blocks\BlocksManager.cs" />
-    <Compile Include="Game\Blocks\SpecificBlocks\AirBlock.cs" />
-    <Compile Include="Game\Blocks\SpecificBlocks\DirtBlock.cs" />
     <Compile Include="Game\Component.cs" />
     <Compile Include="Game\Components\ComponentBody.cs" />
     <Compile Include="Game\Components\ComponentLocomotion.cs" />

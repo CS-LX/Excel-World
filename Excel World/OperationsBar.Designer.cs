@@ -36,19 +36,19 @@
         {
             this.tab1 = this.Factory.CreateRibbonTab();
             this.group1 = this.Factory.CreateRibbonGroup();
+            this.startGameButton = this.Factory.CreateRibbonButton();
+            this.finishGameButton = this.Factory.CreateRibbonButton();
             this.group2 = this.Factory.CreateRibbonGroup();
             this.box1 = this.Factory.CreateRibbonBox();
             this.box2 = this.Factory.CreateRibbonBox();
-            this.box3 = this.Factory.CreateRibbonBox();
-            this.box4 = this.Factory.CreateRibbonBox();
-            this.startGameButton = this.Factory.CreateRibbonButton();
-            this.finishGameButton = this.Factory.CreateRibbonButton();
             this.button1 = this.Factory.CreateRibbonButton();
             this.wButton = this.Factory.CreateRibbonButton();
             this.button3 = this.Factory.CreateRibbonButton();
+            this.box3 = this.Factory.CreateRibbonBox();
             this.aButton = this.Factory.CreateRibbonButton();
             this.button5 = this.Factory.CreateRibbonButton();
             this.dButton = this.Factory.CreateRibbonButton();
+            this.box4 = this.Factory.CreateRibbonBox();
             this.button7 = this.Factory.CreateRibbonButton();
             this.sButton = this.Factory.CreateRibbonButton();
             this.button9 = this.Factory.CreateRibbonButton();
@@ -75,6 +75,24 @@
             this.group1.Items.Add(this.finishGameButton);
             this.group1.Name = "group1";
             // 
+            // startGameButton
+            // 
+            this.startGameButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.startGameButton.Label = "开始游戏";
+            this.startGameButton.Name = "startGameButton";
+            this.startGameButton.OfficeImageId = "MoviePlay";
+            this.startGameButton.ShowImage = true;
+            this.startGameButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.startGameButton_Click);
+            // 
+            // finishGameButton
+            // 
+            this.finishGameButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
+            this.finishGameButton.Label = "结束游戏";
+            this.finishGameButton.Name = "finishGameButton";
+            this.finishGameButton.OfficeImageId = "WindowClose";
+            this.finishGameButton.ShowImage = true;
+            this.finishGameButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.finishGameButton_Click);
+            // 
             // group2
             // 
             this.group2.Items.Add(this.box1);
@@ -94,38 +112,6 @@
             this.box2.Items.Add(this.wButton);
             this.box2.Items.Add(this.button3);
             this.box2.Name = "box2";
-            // 
-            // box3
-            // 
-            this.box3.Items.Add(this.aButton);
-            this.box3.Items.Add(this.button5);
-            this.box3.Items.Add(this.dButton);
-            this.box3.Name = "box3";
-            // 
-            // box4
-            // 
-            this.box4.Items.Add(this.button7);
-            this.box4.Items.Add(this.sButton);
-            this.box4.Items.Add(this.button9);
-            this.box4.Name = "box4";
-            // 
-            // startGameButton
-            // 
-            this.startGameButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.startGameButton.Label = "开始游戏";
-            this.startGameButton.Name = "startGameButton";
-            this.startGameButton.OfficeImageId = "MoviePlay";
-            this.startGameButton.ShowImage = true;
-            this.startGameButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.startGameButton_Click);
-            // 
-            // finishGameButton
-            // 
-            this.finishGameButton.ControlSize = Microsoft.Office.Core.RibbonControlSize.RibbonControlSizeLarge;
-            this.finishGameButton.Label = "结束游戏";
-            this.finishGameButton.Name = "finishGameButton";
-            this.finishGameButton.OfficeImageId = "WindowClose";
-            this.finishGameButton.ShowImage = true;
-            this.finishGameButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.finishGameButton_Click);
             // 
             // button1
             // 
@@ -149,6 +135,13 @@
             this.button3.OfficeImageId = "BorderNone";
             this.button3.ShowImage = true;
             // 
+            // box3
+            // 
+            this.box3.Items.Add(this.aButton);
+            this.box3.Items.Add(this.button5);
+            this.box3.Items.Add(this.dButton);
+            this.box3.Name = "box3";
+            // 
             // aButton
             // 
             this.aButton.Label = " ";
@@ -171,6 +164,13 @@
             this.dButton.OfficeImageId = "ShapeRightArrow";
             this.dButton.ShowImage = true;
             this.dButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.dButton_Click);
+            // 
+            // box4
+            // 
+            this.box4.Items.Add(this.button7);
+            this.box4.Items.Add(this.sButton);
+            this.box4.Items.Add(this.button9);
+            this.box4.Name = "box4";
             // 
             // button7
             // 
