@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Excel_World.Game.Subsystems;
 
 namespace Excel_World.Game
 {
@@ -14,10 +15,12 @@ namespace Excel_World.Game
         public int UpdateOrder => 0;
 
         public ComponentBody m_componentBody;
+        public SubsystemEatables m_subsystemEatables;
 
         public override void Load()
         {
             m_componentBody = Entity.GetComponent<ComponentBody>();
+            m_subsystemEatables = Project.FindSubsystem<SubsystemEatables>();
 
             Input.OnWKeyDown(() => m_direction = new Point2(-1, 0));
             Input.OnAKeyDown(() => m_direction = new Point2(0, -1));
@@ -30,7 +33,9 @@ namespace Excel_World.Game
             if (m_cacheSeconds > 1 / m_speed)
             {
                 m_cacheSeconds = 0;
-                m_componentBody.Move(m_direction);
+                bool isAte = m_subsystemEatables.m_eatables.Contains(m_componentBody.m_headPosition);
+                if (isAte) m_subsystemEatables.BeAte(m_componentBody.m_headPosition);
+                m_componentBody.Move(m_direction, isAte);
             }
             else
             {

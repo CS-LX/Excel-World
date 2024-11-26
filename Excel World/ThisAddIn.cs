@@ -21,10 +21,10 @@ namespace Excel_World
             GameManager.Project.AddSubsystem(new SubsystemEatables());
 
             Entity playerEntity = new Entity() { Name = "Player" };
+            GameManager.Project.AddEntity(playerEntity);
+
             playerEntity.AddComponent(new ComponentBody());
             playerEntity.AddComponent(new ComponentLocomotion());
-
-            GameManager.Project.AddEntity(playerEntity);
         }
 
         private void ThisAddIn_Shutdown(object sender, System.EventArgs e)

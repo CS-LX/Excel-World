@@ -38,6 +38,25 @@ namespace Excel_World.Game.Subsystems
             m_eatables.Clear();
         }
 
+        public void BeAte(Point2 eatPoint)
+        {
+            m_eatables.Remove(eatPoint);
+            int x, y;
+            while (true)
+            {
+                Random random = new Random((int)(DateTime.Now.Ticks % 1000));
+                x = random.Next(0, GameManager.WorldWidth);
+                random.NextDouble();
+                y = random.Next(0, GameManager.WorldHeight);
+
+                if (!m_eatables.Any(a => a == new Point2(x, y)))
+                {
+                    break;
+                }
+            }
+            m_eatables.Add(new Point2(x, y));
+        }
+
         public void Draw(Dictionary<Point2, string> requires)
         {
             foreach (var item in m_eatables)
