@@ -95,5 +95,9 @@ namespace Excel_World.Game
                 drawable.Draw(requires);
             }
         }
+
+        public void Load() => m_components.ForEach(x => x.Load());
+
+        public void Save() => m_components.ForEach(x => x.Save());
     }
 }

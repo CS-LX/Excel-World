@@ -143,11 +143,13 @@ namespace Excel_World.Game
         public void Load()
         {
             m_subsystems.ForEach(x => x.Load());
+            m_entities.ForEach(x => x.Load());
         }
 
         public void Save()
         {
             m_subsystems.ForEach(x => x.Save());
+            m_entities.ForEach(x => x.Save());
         }
     }
 

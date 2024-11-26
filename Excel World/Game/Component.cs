@@ -10,5 +10,9 @@ namespace Excel_World.Game
     {
         public Project Project { get; set; }
         public Entity Entity { get; set; }
+
+        public virtual void Load()  { }
+
+        public virtual void Save() { }
     }
 }

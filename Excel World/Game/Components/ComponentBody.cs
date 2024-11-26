@@ -8,13 +8,36 @@ namespace Excel_World.Game
 {
     public class ComponentBody : Component, IDrawable
     {
-        public Point2 Position = new Point2(10, 10);
+        public List<Point2> m_bodyParts = new();
+        public Point2 m_headPosition;
 
         public int DrawOrder => 1;
 
+        public override void Load()
+        {
+            m_headPosition = new Point2(10, 10);
+            m_bodyParts.Add(m_headPosition);
+        }
+
+        public override void Save()
+        {
+            m_headPosition = new Point2();
+            m_bodyParts.Clear();
+        }
+
+        public void Move(Point2 direciton, bool addLength = false)
+        {
+            m_headPosition += direciton;
+            m_bodyParts.Add(m_headPosition);
+            if (!addLength) m_bodyParts.RemoveAt(0);
+        }
+
         public void Draw(Dictionary<Point2, string> requires)
         {
-            requires[Position] = "🧍‍♂️";
+            foreach (var part in m_bodyParts)
+            {
+                requires[part] = "🧍‍♂️";
+            }
         }
     }
 }

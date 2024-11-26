@@ -192,6 +192,7 @@
     <Compile Include="Game\Entity.cs" />
     <Compile Include="Game\GameManager.cs" />
     <Compile Include="Game\IDrawable.cs" />
+    <Compile Include="Game\Input.cs" />
     <Compile Include="Game\IUpdateable.cs" />
     <Compile Include="Game\Point2.cs" />
     <Compile Include="Game\Project.cs" />
