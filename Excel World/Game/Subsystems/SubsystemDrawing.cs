@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Office.Interop.Excel;
 
 namespace Excel_World.Game.Subsystems
 {
@@ -24,12 +25,16 @@ namespace Excel_World.Game.Subsystems
             for (int row = 1; row <= GameManager.WorldHeight; row++)
             {
                 worksheet.Rows[row].RowHeight = 16;
+                worksheet.Cells[row, GameManager.WorldHeight].Borders[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+                worksheet.Cells[row, GameManager.WorldHeight].Borders[XlBordersIndex.xlEdgeRight].Weight = XlBorderWeight.xlMedium;
             }
 
             // 设置 1~20 列的列宽为 36
             for (int col = 1; col <= GameManager.WorldWidth; col++)
             {
                 worksheet.Columns[col].ColumnWidth = 16 / 7.5;  // 列宽单位和行高不同，约为 1字符 = 7.5 点
+                worksheet.Cells[GameManager.WorldHeight, col].Borders[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
+                worksheet.Cells[GameManager.WorldHeight, col].Borders[XlBordersIndex.xlEdgeBottom].Weight = XlBorderWeight.xlMedium;
             }
 
             m_isRunning = true;
